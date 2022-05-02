@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  outline: 0;
+  font-family: 'Open sans', sans-serif;
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(../img/shimmering-gold-star-patterned-background.jpg);
+  background-size: 150%;
+  background-position: center;
+  background-repeat: repeat;
+  line-height: 1.5em;
+}
+
+h1{
+  font-family: 'Libre Bodoni', serif;
+  font-size: 45px;
+  font-style: bold;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+ul{
+  list-style: none;
+  padding-left:0;
+}
+
+p {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+button img{
+  width: 30px;
+  height:30px;
+}
+
+button img:hover{
+  opacity:0.5;
+}
+
+li{
+  text-align:start;
+  padding-left: 8px;
+}
+
+
+.container {
+  max-width: 640px;
+  margin: 50px auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+.input-tarefa {
+  height: 40px;
+  width: 90%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border-style: hidden;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.input-tarefa::placeholder {
+  font-style: italic;
+  color:rgb(185, 185, 185);
+  font-weight: 100;
+}
+
+.btn-nova-tarefa{
+  width: 10%;
+  padding: 0;
+  margin:0;
+  border: none;
+  background: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+
+
+.div-tarefa{
+  display: grid;
+  grid-template-columns:5% 85% 10%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  margin: 8px auto;
+  padding: 8px 15px;
+
+}
+
+.checkbox{
+  margin: auto 0;
+  width:25px;
+}
+
+.apagar{
+ color: rgb(194, 194, 194);
+  background-color:white;
+  border: none;  
+  border-radius: 2.5px;
+  cursor: pointer;
+}
+
+.apagar:hover {
+  color: rgb(94, 94, 94) ;  
+ }
+
+.tarefa-feita{
+  text-decoration:line-through;
+}
+
+
+
+
+
+
+/* form button {
+  border: none;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  height: 50px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+form button:hover {
+  background: var(--primary-color-darker);
+} */
