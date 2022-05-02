@@ -1,7 +1,8 @@
 * {
   box-sizing: border-box;
   outline: 0;
-  font-family: 'Open sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 
 }
 
@@ -115,22 +116,3 @@ li{
   text-decoration:line-through;
 }
 
-
-
-
-
-
-/* form button {
-  border: none;
-  background: var(--primary-color);
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  height: 50px;
-  cursor: pointer;
-  margin-top: 30px;
-}
-
-form button:hover {
-  background: var(--primary-color-darker);
-} */

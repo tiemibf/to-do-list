@@ -2,21 +2,20 @@ const inputTarefa = document.querySelector('.input-tarefa');
 const btnTarefa = document.querySelector('.btn-nova-tarefa');
 const tarefas = document.querySelector('.tarefas');
 
-function criaLi() {
-  const li = document.createElement('li');
-  return li;
-}
 
-inputTarefa.addEventListener('keypress', function(e) {
-  if (e.keyCode === 13) {
-    if (!inputTarefa.value) return;
-    criaTarefa(inputTarefa.value);
-  }
-});
+
+//limpa input depois de criar uma tarefa
 
 function limpaInput() {
   inputTarefa.value = '';
   inputTarefa.focus();
+}
+
+//cria novos elementos com inserção de tarefas
+
+function criaLi() {
+  const li = document.createElement('li');
+  return li;
 }
 
 function criaBotaoApagar(div) {
@@ -27,54 +26,20 @@ function criaBotaoApagar(div) {
   div.appendChild(botaoApagar);
 }
 
-
-
 function criaCheckbox(div){
   const checkbox = document.createElement('input');
   checkbox.setAttribute('type', 'checkbox');
   checkbox.setAttribute('class', 'checkbox');
+  checkbox.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+      riscarTarefa(event.currentTarget.parentElement);
+       } else {
+      tirarRiscoTarefa(event.currentTarget.parentElement);
+    }
+  })
   div.appendChild(checkbox);
-
   
 }
-
-/* tarefas.addEventListener("DOMNodeInserted", teste)
-
-function teste(){
-  const inputs = document.querySelectorAll('.div-tarefa input');
-  console.log(inputs[1])
-  const input1 = inputs[1]
-  input1.addEventListener('change', function() {
-    if (this.checked) {
-      console.log('checkbox is checked..');
-    } else {
-      console.log('checkbox is not checked');
-    }
-  });  
-}
-  inputs.addEventListener('change', () => {
-    if (this.checked) {
-      console.log('checkbox is checked..');
-    } else {
-      console.log('checkbox is not checked');
-    }
-  }); 
- */
- 
-  
-
-/* function adicionaEventListenerCheckbox() {
-  const checkbox = document.querySelector('.checkbox');
-
-    checkbox.addEventListener('change', function() {
-    if (this.checked) {
-      console.log('checkbox is checked..');
-    } else {
-      console.log('checkbox is not checked');
-    }
-  }); 
-}
- */
 
 function criaDivTarefas(){
   const div = document.createElement('div');
@@ -83,6 +48,7 @@ function criaDivTarefas(){
   return div;
 }
 
+//imprime div que contém a checkbox e a li da tarefa
 
 function criaTarefa(textoInput) {
   const li = criaLi();
@@ -97,70 +63,43 @@ function criaTarefa(textoInput) {
   salvarTarefas();
 }
 
-function riscarTarefa() {
-  const li = document.querySelector('li')
+//marca e desmarca tarefas
+
+function riscarTarefa(tarefaDiv) {
+  const li = tarefaDiv.querySelector('li')
   li.setAttribute('class', 'tarefa-feita');
 };
 
-/* function tarefaFeitaProFinal() {
-  const tarefaFeita = document.querySelector('.tarefa-feita');
-
-
-
-};
- */
-
-function tirarRiscoTarefa(){
-  const li = document.querySelector('li');
+function tirarRiscoTarefa(tarefaDiv){
+  const li = tarefaDiv.querySelector('li');
   li.classList.remove("tarefa-feita");
 };
 
-//const checkbox = document.querySelectorAll(".checkbox");
-
-document.querySelectorAll('.checkbox').forEach(item => {
-  item.addEventListener('change', function() {
-    //handle click
-    if (this.checked) {
-      console.log('checkbox is checked..');
-      riscarTarefa();
-    } else {
-      console.log('checkbox is not checked');
-      tirarRiscoTarefa()
-  
-    }
-  })
-})
-
-/* checkbox.addEventListener('change', function() {
-  if (this.checked) {
-    console.log('checkbox is checked..');
-    riscarTarefa();
-  } else {
-    console.log('checkbox is not checked');
-    tirarRiscoTarefa()
-
-  }
-});
- */
-
-
-
-
-
+//captura eventos do botão de criar nova tarefa
 
 btnTarefa.addEventListener('click', function() {
   if (!inputTarefa.value) return;
   criaTarefa(inputTarefa.value);
 });
 
+inputTarefa.addEventListener('keypress', function(e) {
+  if (e.keyCode === 13) {
+    if (!inputTarefa.value) return;
+    criaTarefa(inputTarefa.value);
+  }
+});
+
+//captura evento do botão de apagar tarefa
+
 document.addEventListener('click', function(e) {
   const el = e.target;
-
   if (el.classList.contains('apagar')) {
     el.parentElement.remove();
     salvarTarefas();
   }
 });
+
+//persistindo dados na localStorage
 
 function salvarTarefas() {
   const liTarefas = tarefas.querySelectorAll('li');
